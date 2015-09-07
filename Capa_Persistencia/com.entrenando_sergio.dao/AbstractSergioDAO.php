@@ -15,12 +15,19 @@ require_once '../com.entrenado_sergio.conexión/ConexiónPHP.php';
 
 abstract class AbstractDAO {
 
+    /**
+     *
+     * @var type 
+     */
     protected $conexion = null; //Variable que tendra la instacia de la clase conecion para poder acceder a la base
     protected $lista = null; // varia que se utilizara como array en cada una de las clases que hereden esta clase
     protected $dto = null; // se utilizara como odjeto de tipo dto en cada una de las clases hijas que erende de esta clase padre
     protected $resultado = null; //Variable que tendra el resultado de la ejecucion del Query
     protected $query = null; // contendra el query al hacer la trasacion a la base
 
+    /**
+     * Traiendo e inicializando el metodo get_intance patron singleton
+     */
     protected function __construct() {
         $this->conexion = ConexiónPHP::get_intance(); //Inicializando la variable con la instacia conexion
     }
