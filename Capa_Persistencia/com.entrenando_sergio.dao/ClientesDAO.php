@@ -33,7 +33,7 @@ class ClientesDAO extends AbstractDAO {
         }
     }
 
-    protected function insertar(ClienteDTO $dto) {
+    protected function insertar($dto) {
         try {
             $this->query = "INSERT INTO clientes VALUES ('" . $dto->getNombreCliente() . "','" . $dto->getApellidoCliente() . "','" . $dto->getTefefono() . "','" . $dto->getEmail() . ");";
             $this->resultado = $this->conexion->ejecutar($this->query);
@@ -47,7 +47,7 @@ class ClientesDAO extends AbstractDAO {
         }
     }
 
-    protected function modificar(ConexionPHP $dto) {
+    protected function modificar($dto) {
         try {
             $this->query = "UDPDATE clientes SET NombreCliente = ? ,ApellidoCliente = ?,tefefono = ?,email = ?;";
             $this->resultado = $this->conexion->ejecutar($this->query);
