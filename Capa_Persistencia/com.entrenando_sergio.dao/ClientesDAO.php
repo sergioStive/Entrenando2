@@ -15,10 +15,18 @@ require_once '../com.entrenando_sergio.dao/AbstractSergioDAO.php';
 
 class ClientesDAO extends AbstractDAO {
 
+    /**
+     * Hereda el constructor de la clase ConexionPHP.php
+     */
     public function __construct() {
         parent::__construct();
     }
 
+    /**
+     * 
+     * @param type $id
+     * @return string
+     */
     protected function eliminar($id) {
         try {
             $this->query = "DELETE FROM clientes where idClientes = '$id';";
@@ -33,9 +41,14 @@ class ClientesDAO extends AbstractDAO {
         }
     }
 
+    /**
+     * 
+     * @param type $dto
+     * @return string
+     */
     protected function insertar($dto) {
         try {
-            $this->query = "INSERT INTO clientes VALUES ('" . $dto->getNombreCliente() . "','" . $dto->getApellidoCliente() . "','" . $dto->getTefefono() . "','" . $dto->getEmail() . ");";
+            $this->query = "INSERT INTO clientes VALUES ('" . $dto->getNombreCliente() . "','" . $dto->getApellidoCliente() . "','" . $dto->getTefefono() . "','" . $dto->getEmail() . "');";
             $this->resultado = $this->conexion->ejecutar($this->query);
             if ($this->resultado) {
                 return "El clientes fue registrado exitosamente";
@@ -47,9 +60,14 @@ class ClientesDAO extends AbstractDAO {
         }
     }
 
-    protected function modificar($dto) {
+    /**
+     * 
+     * @param ClienteDTO $dto
+     * @return string
+     */
+    protected function modificar(ClienteDTO $dto) {
         try {
-            $this->query = "UDPDATE clientes SET NombreCliente = ? ,ApellidoCliente = ?,tefefono = ?,email = ?;";
+            $this->query = "UDPDATE clientes SET NombreCliente = '" . $dto->getNombreCliente() . "' ,ApellidoCliente = '" . $dto->getApellidoCliente() . "',tefefono = '" . $dto->getTefefono() . "',email = '" . $dto->getEmail() . "';";
             $this->resultado = $this->conexion->ejecutar($this->query);
             if ($this->resultado) {
                 return "El Cliente fue modificado exitosamente";
@@ -61,6 +79,10 @@ class ClientesDAO extends AbstractDAO {
         }
     }
 
+    /**
+     * 
+     * @return type
+     */
     protected function odserbarATodos() {
         try {
             $this->lista = array();
@@ -75,17 +97,22 @@ class ClientesDAO extends AbstractDAO {
         }
     }
 
+    /**
+     * 
+     * @param type $id
+     * @return type
+     */
     protected function verUno($id) {
         try {
-            $this->query = "SELECT * FROM clientes where idClientes = ?;";
+            $this->query = "SELECT * FROM clientes where idClientes = '$id';";
             $this->resultado = $this->conexion->ejecutar($this->query);
             if (mysqli_fetch_array($this->resultado) > 0) {
                 $res = mysqli_fetch_array($this->resultado);
-                $this->dto = new ClienteDTO($res['NombreCliente'],$res['ApellidoCliente'],$res['tefefono'],$res['email']);
+                $this->dto = new ClienteDTO($res['NombreCliente'], $res['ApellidoCliente'], $res['tefefono'], $res['email']);
             }
             return $this->dto;
         } catch (Exception $ex) {
-            return $ex->getMessage();   
+            return $ex->getMessage();
         }
     }
 

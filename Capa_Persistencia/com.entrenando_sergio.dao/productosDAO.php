@@ -45,7 +45,7 @@ class productosDAO extends AbstractDAO {
 
     protected function modificar(productosDTO $dto) {
         try {
-            $this->query = "UPDATE productos SET NombreProducto '" . $dto->getNombreProducto() . "',ValorInicial =" . $dto->getValorInicial() . "WHERE idProductos = " . $dto->getIdProductos() . ";";
+            $this->query = "UPDATE productos SET NombreProducto ='" . $dto->getNombreProducto() . "',ValorInicial ='" . $dto->getValorInicial() . "WHERE idProductos = '" . $dto->getIdProductos() . "';";
             $this->resultado = $this->conexion->ejecutar($this->query);
             if ($this->resultado) {
                 return "Si se pudo ejecutar la insertcion a productos";

@@ -19,6 +19,11 @@ class MonedaDAO extends AbstractDAO {
         parent::__construct();
     }
 
+    /**
+     * 
+     * @param type $id
+     * @return string
+     */
     protected function eliminar($id) {
         try {
             $this->query = "DELETE FROM moneda where idMonedas ='$id';";
@@ -31,9 +36,14 @@ class MonedaDAO extends AbstractDAO {
         }
     }
 
+    /**
+     * 
+     * @param type $dto
+     * @return string
+     */
     protected function insertar($dto) {
         try {
-            $this->query = "INSERT INTO monedas values ('" . $dto->getNombreMoneda() . "')";
+            $this->query = "INSERT INTO monedas values ('" . $dto->getNombreMoneda() . "');";
             $this->resultado = $this->conexion->ejecutar($this->query);
             if ($this->resultado) {
                 return "La moneda fue registrada correctamente";
@@ -45,6 +55,11 @@ class MonedaDAO extends AbstractDAO {
         }
     }
 
+    /**
+     * 
+     * @param type $dto
+     * @return string
+     */
     protected function modificar($dto) {
         try {
             $this->query = "UPDATE moneda SET = ('" . $dto->getNombreMoneda() . "')";
@@ -59,6 +74,10 @@ class MonedaDAO extends AbstractDAO {
         }
     }
 
+    /**
+     * 
+     * @return type
+     */
     protected function odserbarATodos() {
         try {
             $this->lista = array();
@@ -73,6 +92,11 @@ class MonedaDAO extends AbstractDAO {
         }
     }
 
+    /**
+     * 
+     * @param type $id
+     * @return type
+     */
     protected function verUno($id) {
         try {
             $this->lista = array();
