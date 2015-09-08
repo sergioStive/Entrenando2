@@ -85,7 +85,7 @@ class MonedaDAO extends AbstractDAO {
                 return $this->dto;
             }
         } catch (Exception $ex) {
-            return $ex->getMessage();    
+            return $ex->getMessage();
         }
     }
 
