@@ -45,12 +45,12 @@ class productosDAO extends AbstractDAO {
 
     protected function modificar(productosDTO $dto) {
         try {
-            $this->query  = "UPDATE productos SET NombreProducto '".$dto->getNombreProducto()."',ValorInicial =".$dto->getValorInicial()."WHERE idProductos = ".$dto->getIdProductos().";";
-            $this->resultado = $this->conexion->ejecutar( $this->query);
-            if ($this->resultado){
+            $this->query = "UPDATE productos SET NombreProducto '" . $dto->getNombreProducto() . "',ValorInicial =" . $dto->getValorInicial() . "WHERE idProductos = " . $dto->getIdProductos() . ";";
+            $this->resultado = $this->conexion->ejecutar($this->query);
+            if ($this->resultado) {
                 return "Si se pudo ejecutar la insertcion a productos";
-            }  else {
-                return "Lamentablemete no se pudo insertar el producto";    
+            } else {
+                return "Lamentablemete no se pudo insertar el producto";
             }
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -61,9 +61,9 @@ class productosDAO extends AbstractDAO {
         try {
             $this->lista = array();
             $this->query = "SELECT * FROM productos";
-            $this->resultado = $this->conexion->ejecutar ($this->query);
-            while ($res = mysqli_fetch_array($this->resultado)){
-                array_push($this->lista,new productosDAO($res['NombreProducto'],$res['ValorInicial']));
+            $this->resultado = $this->conexion->ejecutar($this->query);
+            while ($res = mysqli_fetch_array($this->resultado)) {
+                array_push($this->lista, new productosDAO($res['NombreProducto'], $res['ValorInicial']));
             }
             return $this->lista;
         } catch (Exception $ex) {
@@ -72,7 +72,17 @@ class productosDAO extends AbstractDAO {
     }
 
     protected function verUno($id) {
-        
+        try {
+            $this->query = "SELECT * FROM prodcutos WHERE idProductos = '$id';";
+            $this->resultado = $this->conexion->ejecutar($this->query);
+            if (mysqli_num_rows($this->resultado) > 0) {
+                $res = mysqli_fetch_array($this->resultado);
+                $this->dto = new productosDTO($res['NombreProducto'], $res['ValorInicial']);
+            }
+            return $this->dto;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
     }
 
 }
