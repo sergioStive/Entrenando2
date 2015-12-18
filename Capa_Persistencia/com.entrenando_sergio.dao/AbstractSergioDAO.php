@@ -11,7 +11,7 @@
  *
  * @author Sergio
  */
-require_once '../com.entrenado_sergio.conexión/ConexiónPHP.php';
+require_once '../com.entrenado_sergio.conexion/ConexionPHP.php';
 
 abstract class AbstractDAO {
 
