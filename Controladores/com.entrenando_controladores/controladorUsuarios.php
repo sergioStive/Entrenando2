@@ -13,6 +13,8 @@
  */
 require_once '../../Capa_Persistencia/com.entrenando_sergio.dao/ClientesDAO.php';
 require_once '../../Capa_Persistencia/com.entrenado_sergio.dto/ClienteDTO.php';
+require_once '../../Capa_Persistencia/com.entrenando_sergio.dao/RolUsuarioDAO.php';
+require_once '../../Capa_Persistencia/com.entrenado_sergio.dto/RolesDTO.php';
 
 class controladorUsuarios {
     //put your code here

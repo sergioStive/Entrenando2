@@ -125,7 +125,10 @@ CREATE TABLE `subastas` (
 --
 -- Dumping data for table `subastas`
 --
+--Code para privilegios
+--GRANT ALL PRIVILEGES ON subastas .* TO 'subastas_admin'@'localhost' IDENTIFIED BY 'inventario_expertcob_ltda' WITH GRANT OPTION;
 
+--GRANT ALL PRIVILEGES ON CO_Expertcob_Inventario .* TO 'inventario_admin'@'localhost' IDENTIFIED BY 'inventario_expertcob_ltda' WITH GRANT OPTION;
 LOCK TABLES `subastas` WRITE;
 /*!40000 ALTER TABLE `subastas` DISABLE KEYS */;
 /*!40000 ALTER TABLE `subastas` ENABLE KEYS */;
