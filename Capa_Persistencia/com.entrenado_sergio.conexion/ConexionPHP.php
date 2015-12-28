@@ -14,8 +14,8 @@
 class ConexionPHP {
 
     private $host = "localhost"; // Este es el servidor donde se encuentra la base de datos
-    private $user = "user_subastas"; //Usuario de base de datos
-    private $password = "1234"; //Contraseña de la base de datos
+    private $user = "subastas_admin"; //Usuario de base de datos
+    private $password = "12345"; //Contraseña de la base de datos
     private $namedb = "subastas"; //Nombre de la base de datos
     private $link = null; //variable que contiene la conexion
     private $stmt = null; //Variable que contiene el resultado de la ejecucion del query
