@@ -12,9 +12,15 @@
  * @author APRENDIZ_SENA
  */
 abstract class UsuariosDTO {
+
+private $idClientes = 0;    
+private $NombreCliente = "";
+private $ApellidoCliente = "";
+
+
+protected function __construct(){
     
-    protected $idUsuarios = 0;
-    protected $nombre = "";
-    protected $apellido = "";
-    
+       
+
+ }
 }

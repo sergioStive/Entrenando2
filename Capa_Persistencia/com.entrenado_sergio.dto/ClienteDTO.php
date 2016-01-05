@@ -13,10 +13,8 @@
  */
 class ClienteDTO {
 
-    private $idClientes = 0;
-    private $NombreCliente = "";
-    private $ApellidoCliente = "";
-    private $tefefono = "";
+    
+    private $telefono = "";
     private $email = "";
 
     /**
